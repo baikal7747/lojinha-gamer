@@ -1,3 +1,17 @@
+<script lang="ts">
+
+import {useRouter} from 'vue-router';
+
+const router = useRouter
+export default {
+    props: {
+    title: String,
+    description: String,
+    image: String,
+},
+};
+</script>
+
 <template>
     <div class="product-box " style="width: 18rem;">
   
@@ -10,12 +24,16 @@
 
       </div>
       <div>
-        <button class="buy-button">Comprar</button>
+        <slot name="actions">
+        <button @click="router.push('/AppCart')"  class="buy-button">Comprar</button>
+        </slot>
+        
       </div>
     </div>
   </template>
 
-  <style>
+  <style scoped >
+
 
 @media (min-width: 576px) {
   .card-deck {
@@ -33,7 +51,7 @@
 .product-box {
     display: flex;
     align-items: center;
-    background-color: rgb(196, 196, 196); /* Fundo vermelho */
+    background-image:url("https://i.pinimg.com/236x/ed/69/6a/ed696ad19bc44aa144ced8618dca843d.jpg") ;
     padding: 10px;
     margin: 10px;
     border-radius: 5px;
@@ -59,6 +77,7 @@
 .product-title {
     font-size: 20px;
     margin: 0;
+    color:aliceblue;
 }
 
 .product-description {
@@ -74,12 +93,3 @@
 
 
 
-<script lang="ts">
-    export default {
-    props: {
-    title: String,
-    description: String,
-    image: String,
-},
-};
-</script>

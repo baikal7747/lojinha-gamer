@@ -4,6 +4,7 @@ import cabecalho from './components/cabecalho.vue';
 
 
 
+
 // window.addEventListener('scroll', function () {
 //     const header = document.querySelector('header');
 //     if (window.scrollY > 50) {
@@ -46,6 +47,8 @@ import cabecalho from './components/cabecalho.vue';
         .logo img {
             max-width: 70px; /* Define a largura máxima da imagem da logo */
         }
+
+
 
 </style>
 

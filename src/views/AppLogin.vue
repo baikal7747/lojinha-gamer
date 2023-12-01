@@ -1,106 +1,91 @@
-<script lang="ts" setup>
-import {ref} from 'vue';
-const d_Email= ref()
-const d_Password =ref()
+<script  lang="ts" setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router'
+import { useLoginStore } from '../store/login'
 
-function Login(){
-  console.log("Login")
-  console.log("d_Email.value")
-  console.log("d_Password.value")
+const store = useLoginStore()
+const router = useRouter()
+
+
+const d_email = ref();
+const d_password = ref();
+
+async function login(){
+
+try {
+ const response = await fetch('https://pc.4cc.shop/api/login',{
+        method:  'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: d_email.value,
+          password: d_password.value,
+        })
+      })
+  const result = await response.json();
+  store.id =  result["id"] 
+  store.email =  result["email"] 
+  store.token =  result["token"]
+
+  router.push("/")
+  console.log("Success:", result);
+
+} catch (error) {
+  console.error("Error:", error);
 }
+          //.then(response => response.json())
+        //.then(data => console.log(data))
+
+
+}
+
 </script>
+<template> 
+<section class="vh-100 mt-5">
+  <div class="container-fluid h-custom ">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-8 col-lg-6 col-xl-4">
+        <form>
+          
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input v-model="d_email"  type="email" id="form3Example3" class="form-control form-control-lg"
+              placeholder="Entre com um email válido" />
+            <label class="form-label" for="form3Example3">Email</label>
+          </div>
 
-<template>
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <input v-model="d_password" type="password" id="form3Example4" class="form-control form-control-lg"
+              placeholder="Entre com a senha" />
+            <label class="form-label" for="form3Example4">Senha</label>
+          </div>
 
-<!-- Section: Design Block -->
-<section class="text-center">
-  <!-- Background image -->
-  <div class="p-5 bg-image" style="
-        background-image: url('https://static.brusheezy.com/system/resources/previews/000/053/272/non_2x/texture-patterned-brushes-photoshop-textures.jpg');
-        height: 300px;
-        "></div>
-  <!-- Background image -->
-
-  <div class="card mx-4 mx-md-5 shadow-5-strong" style="
-        margin-top: -100px;
-        background: hsla(0, 0%, 100%, 0.8);
-        backdrop-filter: blur(30px);
-        ">
-    <div class="card-body py-5 px-md-5">
-
-      <div class="row d-flex justify-content-center">
-        <div class="col-lg-8">
-          <h2 class="fw-bold mb-5">Sign up now</h2>
-          <form>
-            <!-- 2 column grid layout with text inputs for the first and last names -->
-            <div class="row">
-              <div class="col-md-6 mb-4">
-                <div class="form-outline">
-                  <input type="text" id="form3Example1" class="form-control" />
-                  <label class="form-label" for="form3Example1">First name</label>
-                </div>
-              </div>
-              <div class="col-md-6 mb-4">
-                <div class="form-outline">
-                  <input type="text" id="form3Example2" class="form-control" />
-                  <label class="form-label" for="form3Example2">Last name</label>
-                </div>
-              </div>
-            </div>
-
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <input v-model=d_Email type="email" id="form3Example3" class="form-control" />
-              <label class="form-label" for="form3Example3">Email address</label>
-            </div>
-
-            <!-- Password input -->
-            <div class="form-outline mb-4">
-              <input v-model=d_Password type="password" id="form3Example4" class="form-control" />
-              <label class="form-label" for="form3Example4">Password</label>
-            </div>
-
+          <div class="d-flex justify-content-between align-items-center">
             <!-- Checkbox -->
-            <div class="form-check d-flex justify-content-center mb-4">
-              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
-              <label class="form-check-label" for="form2Example33">
-                Subscribe to our newsletter
+            <div class="form-check mb-0">
+              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+              <label class="form-check-label" for="form2Example3">
+                Remember me
               </label>
             </div>
+            <a href="#!" class="text-body">Esqueceu a senha     ?</a>
+          </div>
 
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">
-              Sign up
-            </button>
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button @click="login()" type="button" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Entre</button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">Você não tem conta ?<a href="#!"
+                class="link-danger">Faça o cadastro.</a></p>
+          </div>
 
-            <!-- Register buttons -->
-            <div class="text-center">
-              <p>or sign up with:</p>
-              <button type="button" class="btn btn-link btn-floating mx-1">
-                <i class="fab fa-facebook-f"></i>
-              </button>
-
-              <button type="button" class="btn btn-link btn-floating mx-1">
-                <i class="fab fa-google"></i>
-              </button>
-
-              <button type="button" class="btn btn-link btn-floating mx-1">
-                <i class="fab fa-twitter"></i>
-              </button>
-
-              <button type="button" class="btn btn-link btn-floating mx-1">
-                <i class="fab fa-github"></i>
-              </button>
-            </div>
-          </form>
-        </div>
+        </form>
       </div>
     </div>
   </div>
-</section>
-<!-- Section: Design Block -->
-
+  </section>
 </template>
-
-
-<style></style>
+<style scoped>
+ background-image:url("./assets/hy.gif") ;
+</style>
