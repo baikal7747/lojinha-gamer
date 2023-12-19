@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import Card from '../components/card.vue';
 import inicio from '../components/inicio.vue';
-import batman from '../components/batman.vue';
+import CartItem from '../components/CartItem.vue';
 import { ref } from 'vue';
 const produtos = ref(null);
 
@@ -42,7 +42,7 @@ fetch("https://pc.4cc.shop/api/computador")
              :alt="(produto as any)?.attributes.modelo" />
       </template>
       <template #actions>
-        <router-link :to="'/AddCart/' + (produto as any)?.id" class="btn btn-primary">Comprar</router-link>
+        <router-link :to="'/cart/' + (produto as any)?.id" class="btn btn-primary">Comprar</router-link>
       </template>
 
 

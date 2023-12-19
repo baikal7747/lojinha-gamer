@@ -4,6 +4,7 @@ import AppMain from "../views/AppMain.vue"
 import AppLogin from "../views/AppLogin.vue"
 import top3 from "../views/top3.vue"
 import AppCart from "../views/AppCart.vue"
+import AppCreateUser from "../views/AppCreateUser.vue";
 
 
 const routes = [ 
@@ -33,10 +34,15 @@ const routes = [
     component: AppCart
 },
 {
-path: '/addCart/:id',
+path: '/cart/:id',
 name: 'AddCart',
 component: AppCart
 },
+{
+    path: '/cadastro',
+    name: 'Cadastro',
+    component: AppCreateUser
+}
 
 ]
 

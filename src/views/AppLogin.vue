@@ -87,5 +87,5 @@ try {
   </section>
 </template>
 <style scoped>
- background-image:url("./assets/hy.gif") ;
+
 </style>

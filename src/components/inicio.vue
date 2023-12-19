@@ -1,7 +1,7 @@
 <template>
   <div class="jogo_destaque">
       <div class="oferta">
-          <h2 class="informacao">GEFORCE GTX</h2>
+          <h2 class="informacao">RTX</h2>
           <p class="informacao">10% OFF</p>
           <a class="botao_confirmar" href="/teste">conferir</a>
       </div>
@@ -10,12 +10,13 @@
 
 <style scoped>
   .jogo_destaque{
-  background-image: url(../assets/inicio.jpeg);
+  background-image: url(../assets/4090.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   width: 100%;
   height: 50rem;
+  margin-top: -10%;
 }
 .oferta{
   color: whitesmoke;

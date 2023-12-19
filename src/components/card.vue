@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-    <div class="product-box " style="width: 18rem;">
+    <div class="product-box " style="width: 25rem;">
   
 
       <div class= product-image> <slot name="imagens"> </slot>
@@ -64,8 +64,8 @@ export default {
 }
 
 .buy-button {
-    background-color: rgb(97, 247, 10); /* Botão branco */
-    color: rgb(0, 0, 0); /* Texto vermelho */
+    background-color: rgb(97, 247, 10);
+    color: rgb(0, 0, 0); 
     border: none;
     padding: 5px 10px;
     border-radius: 3px;
@@ -78,6 +78,7 @@ export default {
     font-size: 20px;
     margin: 0;
     color:aliceblue;
+
 }
 
 .product-description {

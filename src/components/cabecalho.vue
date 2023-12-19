@@ -10,102 +10,59 @@ function logout(){
 
 store.email = ""
 store.id = ""
-stote.token = ""
+store.token = ""
 
 }
 
 </script>
 
-
-
 <template>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <!-- Container wrapper -->
-  <div class="container-fluid">
-
-          <!-- Navbar brand -->
-        <a class="navbar-brand mt-2 mt-lg-0" href="/login">
-        <img src="../assets/menu.gif" height="45" alt="MDB Logo"
-          loading="lazy" class="h-10" />
-        </a>
-
-    <!-- Toggle button -->
-    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-      data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-      aria-label="Toggle navigation">
-      <i class="fas fa-bars text-light"></i>
-    </button>
-
-    <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!-- Left links -->
-      <ul class="navbar-nav me-auto d-flex flex-row mt-3 mt-lg-0">
-        <li class="nav-item text-center mx-2 mx-lg-1">
-          <router-link  class="nav-link " aria-current="page" to="/">
+      <div class="container text-bg-dark ">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <router-link  class="nav-link " aria-current="page" to="/#">
             <div>
-              <span class="badge rounded-pill badge-notification bg-danger"><i class="bi bi-house-fill"></i></span>
+              <img src="../assets/menu.gif" height="45" alt="MDB Logo"
+          loading="lazy" class="h-10" />
             </div>
             Home
           </router-link >
-        </li>
-        <li class="nav-item text-center mx-2 mx-lg-1">
           <router-link  class="nav-link active" to="/about">
             <div>
               <span class="badge rounded-pill badge-notification bg-danger"><i class="bi bi-file-earmark-person-fill"></i></span>
             </div>
             Sobre
           </router-link >
-        </li>
-        <li class="nav-item text-center mx-2 mx-lg-1">
-          <router-link  class="nav-link active" to="/top3">
-            <div>
-              <span class="badge rounded-pill badge-notification bg-danger"><i class="bi bi-file-earmark-person-fill"></i></span>
-            </div>
-            destaques
-          </router-link >
-        </li>
         
-      </ul>
-      <!-- Left links -->
-
-      <!-- Right links -->
-      <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
-        <li class="nav-item text-center mx-2 mx-lg-1">
-          <router-link  class="nav-link active" to="/Cart">
+        
+        <router-link  class="nav-link active" to="/Cart">
             <div>
               <span class="badge rounded-pill badge-notification bg-info"><i class="bi bi-cart4"></i></span>
             </div>
             Carinho
+        </router-link >
+        <router-link  class="nav-link active" to="/top3">
+            <div>
+              <span class="badge rounded-pill badge-notification bg-danger"><i class="bi bi-file-earmark-person-fill"></i></span>
+            </div>
+            Novo
           </router-link >
-        </li>
-      </ul>
-      <!-- Right links -->
+      </ul>    
 
-      <!-- Search form -->
-      <form class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0">
-        <input type="search" class="form-control" placeholder="Search" aria-label="Search" />
-        <button class="btn btn-primary" type="button" data-mdb-ripple-color="dark">
-          Search
-        </button>
+        
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
       </form>
-
       <div v-if="store.email === ''" class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0">
         <button type="button" class="btn btn-outline-light me-2" @click="router.push('/login')">Entre</button>
         <button type="button" class="btn btn-warning" @click="router.push('/cadastro')">Cadastro</button>
       </div>
       <div v-else class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0">
-        <p style="color: azure;">{{store.email}}</p>
+        <p style="color: rgb(21, 235, 50);">{{store.email}}</p>
         <button type="button" class="btn btn-warning" @click="logout()">Sair</button>
       </div>
-      
+   
     </div>
-    <!-- Collapsible wrapper -->
-  </div>
-  <!-- Container wrapper -->
-</nav>
-<!-- Navbar -->
-
 
 </template>
 
